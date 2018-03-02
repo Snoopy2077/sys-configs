@@ -1,0 +1,13 @@
+[user]
+	name = Michael Domke
+	email = github@mpdmail.de
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph
+  type = cat-file -t
+  dump = cat-file -p
+
