@@ -1,0 +1,7 @@
+---
+- hosts: all
+- include_vars: secret.yml
+
+tasks:
+  - name: Change root password
+    user: name=root password="{{ ROOT_PASSWORD }}"
