@@ -1,7 +1,19 @@
 ---
 - hosts: all
-- include_vars: secret.yml
+  gather_facts: no
+  vars:
+    testpwd: "blabliblablub"
+  tasks:
+    - name: include vars
+      include_vars: secret.yml
 
-tasks:
-  - name: Change root password
-    user: name=root password="{{ ROOT_PASSWORD }}"
+    - name: debug stuff
+      debug:
+        msg: "{{ ROOT_PASSWORD }}"
+    - name: Change root password
+      user: name=snoopy password="{{ ROOT_PASSWORD | password_hash('sha512')}}"
+    - name: Change test password
+      user:
+        name: test
+        state: absent
+        password: "{{ testpwd | password_hash('sha512') }}"
