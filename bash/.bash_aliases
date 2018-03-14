@@ -35,7 +35,7 @@ fi
 ## ls
 alias ls='ls -hF --color=auto'
 alias lr='ls -R'                    # recursive ls
-alias ll='ls -l'
+alias ll='ls -al'
 alias la='ll -A'
 alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size

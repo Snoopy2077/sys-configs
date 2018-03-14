@@ -12,6 +12,7 @@
       - logwatch
       - vim
       - sudo
+      - git
   tasks:
     - name: include vars
       include_vars: secret.yml
@@ -107,7 +108,14 @@
       with_items:
         - ../bash/.bashrc
         - ../bash/.bash_aliases
-    
+
+    - name: Copy .gitconfig to deploy account
+      copy:
+        src: ../git/.gitconfig
+        dest: '/home/{{ DEPLOY_USER_NAME }}' 
+        owner: '{{ DEPLOY_USER_NAME }}'
+        group: '{{ DEPLOY_USER_NAME }}'
+
   handlers:
     - name: Restart ssh
       service: name=ssh state=restarted
